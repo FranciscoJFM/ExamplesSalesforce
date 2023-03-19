@@ -1,0 +1,61 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	    <lightning:card>
+
+<div class="slds-page-header" role="banner">
+       <lightning:recordViewForm recordId="{!v.recordId}" 
+                                 objectApiName="Account">
+           
+           <div class="slds-text-heading_label">
+               <lightning:outputField fieldName="Name" variant="label-hidden"/>
+           </div>
+           <lightning:messages/>
+       </lightning:recordViewForm>
+       <h1 class="slds-page-header__title slds-m-right_small
+                      slds-truncate slds-align-left">Create New Contact</h1>
+    </div>
+                <lightning:tabset selectedTabId="contact">
+        <lightning:tab label="Contacto" id="contact">
+    <lightning:recordEditForm aura:id="myform"
+                              objectApiName="Contact"
+                              onsubmit="{!c.handleSubmit}"
+                              onsuccess="{!c.handleSuccess}">
+        <lightning:messages/>
+        <lightning:inputField fieldName="FirstName" class="textInput"/>
+        <lightning:inputField fieldName="LastName"  class="textInput"/>
+        <lightning:inputField fieldName="Title"  class="textInput"/>
+        <lightning:inputField fieldName="Phone"  class="textInput"/>
+        <lightning:inputField fieldName="Email"  class="textInput"/>
+        <div class="slds-m-top_medium">
+            <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
+            <lightning:button type="submit" label="Save Contact" variant="brand"/>
+        </div>
+    </lightning:recordEditForm>
+                 </lightning:tab>
+        <lightning:tab label="Crear Cuenta" id="CreateAccount">
+                <lightning:recordEditForm aura:id="formAccount"
+                              objectApiName="Account"
+                              onsubmit="{!c.handleSubmit}"
+                              onsuccess="{!c.handleSuccess}">
+        <lightning:messages/>
+    <lightning:card>
+      <h1 class="slds-page-header__title slds-m-right_small
+                      slds-truncate slds-align-left">Create New Account</h1>
+            <lightning:inputField label="Id"></lightning:inputField>
+            <lightning:inputField label="Name"></lightning:inputField>
+            <lightning:inputField label="Phone"></lightning:inputField>
+            
+           <div class="slds-m-top_medium">
+            <lightning:button label="Create Account" variant="brand" ></lightning:button>
+     </div>
+                 </lightning:card>  
+                        </lightning:recordEditForm>
+
+
+                    </lightning:tab>
+        <lightning:tab label="Item Three" id="three">
+           Tab Three !
+        </lightning:tab>
+    </lightning:tabset>
+        </lightning:card>
+
+</aura:component>

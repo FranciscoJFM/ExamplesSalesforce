@@ -1,0 +1,58 @@
+<template>
+    <lightning-card title="Example web component Lightning" icon-name="custom:custom14">
+      <div class="slds-m-around_medium">
+        <p>Example,{greeting}!</p>
+        <lightning-input label="Name" value={greeting} onchange={changeHandler}></lightning-input>
+        <lightning-input label="Last Name" value={last_name} onchange={changeHandler}></lightning-input>
+        <br/>
+        <lightning-accordion active-section-name="A">
+            <lightning-accordion-section name="A" label="Accordion Title A">
+                    <lightning-button-menu slot="actions" alternative-text="Show menu" icon-size="x-small" menu-alignment="auto">
+                        <lightning-menu-item value="New" label="Menu Item One"></lightning-menu-item>
+                        <lightning-menu-item value="Edit" label="Menu Item Two"></lightning-menu-item>
+                    </lightning-button-menu>
+                    <p>This is the content area for section A.</p>
+                    <p>.</p>
+                    <p>.</p>
+                    <p>.</p>
+                    <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+        </lightning-accordion>
+                <br/>
+                <lightning-card  title="Hello">
+                    <lightning-button label="New" slot="actions"></lightning-button>
+                    <p class="slds-p-horizontal_small">Card Body (custom component)</p>
+                    <p slot="footer">Card Footer</p>
+                </lightning-card>
+                <br/>
+                <lightning-button-menu alternative-text="Show menu">
+                    <lightning-menu-item value="MenuItemOne" label="Menu Item One"></lightning-menu-item>
+                    <lightning-menu-item value="MenuItemTwo" label="Menu Item Two"></lightning-menu-item>
+                    <lightning-menu-item value="MenuItemThree" label="Menu Item Three"></lightning-menu-item>
+                    <lightning-menu-item value="MenuItemFour" label="Menu Item Four"></lightning-menu-item>
+                </lightning-button-menu>
+                <br/>
+                <br/>
+        <lightning-button variant="success" label="Success" title="Successful action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+
+    </div>
+    </lightning-card>
+    <lightning-card title="LdsCreateRecord" icon-name="standard:record">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input label="Id" disabled value={accountId}></lightning-input>
+            <lightning-input label="Name" onchange={handleNameChange} class="slds-m-bottom_x-small"></lightning-input>
+            <lightning-input label="Phone" onchange={handlePhoneChange} class="slds-m-bottom_x-small"></lightning-input>
+            
+
+        <lightning-button-menu alternative-text="Show menu" icon-name="utility:settings" variant="border-filled"  onselect={handleOnselect} label="Actions">    
+          <lightning-menu-item value="None" label="--none--"></lightning-menu-item>
+          <lightning-menu-item value="CDMX" label="CDMX"></lightning-menu-item>
+          <lightning-menu-item value="GDL" label="GDL"></lightning-menu-item>
+          <lightning-menu-item value="ZCZ" label="ZCZ"></lightning-menu-item>
+      </lightning-button-menu>
+
+            <lightning-button label="Create Account" variant="brand" onclick={createAccount}></lightning-button>
+            
+        </div>
+     </lightning-card>
+  </template>

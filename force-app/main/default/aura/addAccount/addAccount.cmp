@@ -1,0 +1,117 @@
+<aura:component controller="exampleAccountList" 
+            implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride" access="global" 
+          >
+<aura:attribute name="recordId" type="String"/>
+<aura:attribute name="user" type="Account" default="{}"/>
+<aura:attribute name="createAcc" type="Account"/>
+<aura:attribute name="objName" type="String" default="Account"/>
+<aura:attribute name="fldName" type="String" default="Paco"/>
+<aura:attribute name="ratingList" type="List"/>
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+<lightning:notificationsLibrary aura:id="notifLib"/>
+<aura:attribute type="Account[]" name="acctList"/>
+<aura:handler name="init" value="{!this}" action="{!c.fetchAccounts}"/>
+
+            
+<div class="slds-page-header">
+  <div class="slds-grid">
+    <div class="slds-col slds-has-flexi-truncate">
+        no. de cuenta: {!v.recordId}
+      <p class="slds-text-title_caps slds-line-height_reset">Nueva cuenta</p>
+      <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate"  title="Account">Cuenta</h1>
+    </div>
+  </div>
+</div>
+ <lightning:card>
+
+<div class="slds-p-around_small">
+     <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="6" padding="around-small">
+    <lightning:input type="Text" label="Nombre" value="{!v.createAcc.Name}"  disabled="true"/>
+         </lightning:layoutItem>
+                     <lightning:layoutItem size="6" padding="around-small">
+    <lightning:input type="Text" label="Apellido" value="{!v.createAcc.LastName__c}"  disabled="true"/>
+         </lightning:layoutItem>
+                     <lightning:layoutItem size="6" padding="around-small">
+    <lightning:input type="Email" name="Correo" value="{!v.createAcc.Email__c}" label="Correo"/>
+         </lightning:layoutItem>
+                     <lightning:layoutItem size="6" padding="around-small">
+    <lightning:input type="Phone" label="Celular" value="{!v.createAcc.Phone__c}"/>
+         </lightning:layoutItem>
+                           <lightning:layoutItem size="12" padding="around-small">
+    <lightning:input type="Profile" label="Perfil" value="{!v.createAcc.perfil__c}"/>
+         </lightning:layoutItem>
+            <lightning:layoutItem size="12" padding="around-small">
+                       <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Name">Account Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Name">Email</div>
+                </th>
+                  <th scope="col">
+                    <div class="slds-truncate" title="Profile">Profile</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+         <aura:iteration items="{!v.acctList}" var="item">
+             <!-- <aura:if isTrue="{!item.perfil__c == 'Abc'}">-->  
+                         
+
+                <tr class="{!'slds-hint-parent ' + (item.perfil__c == 'Abc' ? ' row-profileA' : ' row-profileB')}">
+                    <td data-label="Account Name">
+                        <div class="slds-truncate" title="">{!item.Name}</div>
+                    </td>
+                    <td data-label="Email">
+                        <div class="slds-truncate" title="">{!item.Email__c}</div>
+                    </td>
+                       <td data-label="Profile">
+                        <div class="slds-truncate" title="">{!item.perfil__c}</div>
+                    </td>
+                </tr>
+                            
+                   <!--  <aura:set attribute="else">  
+                         
+                           <tr class="slds-hint-parent row-profileB">
+                    <td data-label="Account Name">
+                        <div class="slds-truncate" title="">{!item.Name}</div>
+                    </td>
+                    <td data-label="Email">
+                        <div class="slds-truncate" title="">{!item.Email__c}</div>
+                    </td>
+                       <td data-label="Profile">
+                        <div class="slds-truncate" title="">{!item.perfil__c}</div>
+                    </td>
+                </tr>
+                                              </aura:set>
+                           </aura:if> -->
+            </aura:iteration>
+        </tbody>
+    </table>
+
+     </lightning:layoutItem>
+           <lightning:layoutItem size="4" padding="around-small">
+    <lightning:button label="Editar" iconPosition="left" variant="brand" onclick="{!c.doUpdate}"/>
+         </lightning:layoutItem>
+           <lightning:layoutItem size="4" padding="around-small">
+    <lightning:button label="Guardar" iconPosition="center" variant="brand" onclick="{!c.doSave}"/>
+         </lightning:layoutItem>
+           <lightning:layoutItem size="4" padding="around-small">
+    <lightning:button label="Cancelar" iconPosition="right" variant="destructive" onclick="{!c.docancel}"/>
+         </lightning:layoutItem>
+        
+           <lightning:layoutItem size="12" padding="around-small">
+    <lightning:input aura:id="fileId" type="file" 
+                     name="file" label="Subir archivo" multiple="false"/>
+         </lightning:layoutItem>
+         </lightning:layout>
+    
+    </div>
+             
+            </lightning:card>
+     
+    
+</aura:component>

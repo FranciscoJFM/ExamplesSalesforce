@@ -1,0 +1,16 @@
+/*.THIS .slds-card__header{
+        background-color: aliceblue;
+}
+.THIS .slds-card__body{
+        background-color: cyan;
+}
+.THIS .slds-card__footer{
+        background-color: aquamarine;
+}*/
+.THIS tr.row-profileA{
+    background-color: red;
+}
+
+.THIS tr.row-profileB{
+    background-color: green;
+}
