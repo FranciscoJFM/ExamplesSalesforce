@@ -1,0 +1,38 @@
+<aura:component controller="ExampleConectionSAP_CC">
+    <aura:attribute name="codeMatt" type="integer" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="data" type="list" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="spinner" type="boolean"/>
+    
+    <aura:if isTrue="{!v.spinner}">  
+        <div class="{! $Browser.isPhone ? '' : 'spinnerCss'}">
+            <lightning:spinner alternativeText="Loading" size="large" variant="brand" />
+        </div>
+    </aura:if> 
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_12-of-12 slds-large-size_12-of-12 slds-var-m-bottom_medium">
+          <div class="slds-grid slds-wrap slds-grid_align-center">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_5-of-12 slds-large-size_5-of-12">
+                <lightning:input value="{!v.codeMatt}" variant="label-inline" required="true" placeholder="Consulta Material.."
+                label="Código de Material" maxlength="5" aura:id="matSearch" pattern="^[0-9]+" />
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                <div class="centerMobile">
+                    <lightning:button onclick="{!c.getCustomerData}" variant="brand" label="Consultar" iconName="utility:search" />
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_12-of-12 slds-large-size_12-of-12">
+            <div class="slds-scrollable_x" style="height: 450px">
+                <lightning:datatable keyField="id" data="{!v.data}" columns="{!v.columns}" hideCheckboxColumn="true"
+                class="slds-table_cell-buffer slds-table_bordered slds-max-medium-table_stacked content"
+                resizeColumnDisabled="true" suppressBottomBar="true" showRowNumberColumn="true" />
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,31 @@
+<aura:component
+  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+  access="global" description="exampleSap" controller="ExampleConectionSAP_CC">
+  <!-- <aura:html tag="style">
+    .slds-modal__container {
+      min-height:  90vh !important;
+      min-width: 90vw !important;
+    }
+    .slds-popover_tooltip
+    {
+    min-width: 60% !important;
+    background-color:#fdc182;
+    }
+    @media screen and (max-width: 800px) { 
+      .slds-modal__container {
+        margin: 0 !important;
+        padding-bottom: 3px !important;
+    }
+  } -->
+  <!-- </aura:html> -->
+  <lightning:overlayLibrary aura:id="overlayLib"/>
+  <lightning:workspaceAPI aura:id="workspace" />
+
+  <lightning:card title="Materiales" iconName="custom:custom24" class="slds-table_bordered">
+    <aura:set attribute="actions">
+      <lightning:button variant="Consultar" label="Consultar" iconName="utility:search" iconPosition="right"
+        onclick="{!c.openModel}" />
+    </aura:set>
+  </lightning:card>
+
+</aura:component>

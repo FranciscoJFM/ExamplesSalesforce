@@ -1,0 +1,39 @@
+.THIS .slds-table_header-fixed_container.slds-scrollable_x{
+    background-color: #fff !important;
+}
+.THIS .slds-th__action {
+    background-color: #BDD2F6;
+}
+.THIS .slds-spinner_container{
+     /* margin: 0; */
+    position: static;
+}
+.THIS .content{
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) { /*1080 tablet*/
+    .THIS .centerMobile{
+        display: flex;
+        justify-content: center;
+    }
+    .THIS td:first-child {
+        background-color: #BDD2F6;
+    }
+    .THIS .slds-table tbody tr:hover td:first-child{
+        background-color: #BDD2F6 !important;
+    }
+    .THIS .slds-scrollable_x{
+
+        overflow: hidden !important;
+        overflow-x: hidden;
+    }
+    .THIS lightning-primitive-cell-factory > span{
+        justify-content: normal !important;
+        font-weight: normal;
+    }
+    .THIS .headerBold{
+        font-weight: bold;
+    }
+
+}
